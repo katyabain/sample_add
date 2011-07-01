@@ -17,7 +17,11 @@ flash[:success] = "Welcome to the Sample App!"
 redirect_to @user   
  else
       @title = "Sign up"
-      render 'new'
+# exercise 8 start
+@user.password = ""     
+@user.password_confirmation = ""
+# exercise 8 end
+ render 'new'
     end
 end
 end
