@@ -12,9 +12,10 @@ def show
 def create
     @user = User.new(params[:user])
     if @user.save
+    sign_in @user
       # Handle a successful save.
-flash[:success] = "Welcome to the Sample App!"
-redirect_to @user   
+    flash[:success] = "Welcome to the Sample App!"
+    redirect_to @user   
  else
       @title = "Sign up"
 # exercise 8 start
