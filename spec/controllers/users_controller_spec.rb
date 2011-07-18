@@ -43,6 +43,7 @@ it "should have an element for each user" do
         end
       end
 
+
 it "should paginate users" do
         get :index
         response.should have_selector("div.pagination")
@@ -85,6 +86,14 @@ it "should have the right title" do
     it "should have a profile image" do
       get :show, :id => @user
       response.should have_selector("h1>img", :class => "gravatar")
+    end
+
+it "should show the user's microposts" do
+      mp1 = Factory(:micropost, :user => @user, :content => "Foo bar")
+      mp2 = Factory(:micropost, :user => @user, :content => "Baz quux")
+      get :show, :id => @user
+      response.should have_selector("span.content", :content => mp1.content)
+      response.should have_selector("span.content", :content => mp2.content)
     end
 
   end
@@ -278,7 +287,7 @@ describe "authentication of edit/update pages" do
  end 
 #add one end
 
-describe "for signed-in users" do
+    describe "for signed-in users" do
 
       before(:each) do
         wrong_user = Factory(:user, :email => "user@example.net")
@@ -296,7 +305,6 @@ describe "for signed-in users" do
       end
     end
   end 
-# posibble 2 end
 
 describe "DELETE 'destroy'" do
 
@@ -338,6 +346,5 @@ describe "DELETE 'destroy'" do
       end
     end
   end
-end   
- 
+end 
 
