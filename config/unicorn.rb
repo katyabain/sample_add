@@ -1,5 +1,5 @@
 #APP_ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
-APP_ROOT = "/var/www/sample_app"
+APP_ROOT = "/var/www/sample_app/current"
 
 if ENV['MY_RUBY_HOME'] && ENV['MY_RUBY_HOME'].include?('rvm')
   begin
